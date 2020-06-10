@@ -10,7 +10,7 @@ export const GET_ALL_MATCHES = gql`
 `;
 
 export const GET_LIVE_MATCHES = gql`
-  query LiveMatches {
+  subscription LiveMatches {
     matches(
       order_by: { started_at: desc }
       where: { finished: { _eq: false } }
@@ -21,6 +21,7 @@ export const GET_LIVE_MATCHES = gql`
         p1_score
         p2_score
       }
+      winner_ref
       p2 {
         name
       }
@@ -43,6 +44,7 @@ export const GET_FINISHED_MATCHES = gql`
         p1_score
         p2_score
       }
+      winner_ref
       p2 {
         name
       }
